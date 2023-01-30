@@ -15,7 +15,18 @@
 
   <div>
     <button (click)="logout()">Logout</button>
+    <div>
+      <label for="searchReturn">Buscar Estacionamento pelo id ou código</label>
+      <form (ngSubmit)="search()">
+        <input type="text" name="buscaId" id="buscaId" [(ngModel)]="searchValue" />
+        <button type="submit">Buscar</button>
+      </form>
+      <span id="searchReturn" *ngIf="this.park.id && this.park.code">{{this.park.id}} | {{this.park.name}} |
+        {{this.park.code}} | {{this.park.address}} | {{this.park.discount}} | {{this.park.distance}}</span>
+    </div>
     <ul>
+      <button (click)="orderBy('id')">Ordena por id</button>
+      <button (click)="orderBy('distance')">Ordena por distancia</button>
       <div *ngFor="let park of parks">
         <li>{{park.id}} | {{park.name}} | {{park.code}} | {{park.address}} | {{park.discount}} | {{park.distance}}</li>
         <button (click)="openMap(park)"> Navegar para estacionamento</button>
