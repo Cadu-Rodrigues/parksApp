@@ -4,5 +4,7 @@ export interface Park{
     code: string,
     discount: number,
     distance: number,
+    latitude: number,
+    longitude: number,
     name: string,
 }

@@ -15,9 +15,10 @@
 
   <div>
     <ul>
-      <li *ngFor="let park of parks">
-        {{park.id}} | {{park.name}} | {{park.code}} | {{park.address}} | {{park.discount}} | {{park.distance}}
-      </li>
+      <div *ngFor="let park of parks">
+        <li>{{park.id}} | {{park.name}} | {{park.code}} | {{park.address}} | {{park.discount}} | {{park.distance}}</li>
+        <button (click)="openMap(park)"> Navegar para estacionamento</button>
+      </div>
     </ul>
   </div>
 </ion-content>
