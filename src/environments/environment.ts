@@ -5,6 +5,15 @@
 export const environment = {
   production: false,
   APILink: "https://api.hubees.com.br/park",
+  firebaseConfig: {
+    apiKey: "AIzaSyABj6j-LNZQxb9tEQcFEmwl5KNv1KRhl5I",
+    authDomain: "parksapp-98afb.firebaseapp.com",
+    projectId: "parksapp-98afb",
+    storageBucket: "parksapp-98afb.appspot.com",
+    messagingSenderId: "715753699333",
+    appId: "1:715753699333:web:e55253b672b947be18046c",
+    measurementId: "G-H2BLLDC77K"
+  }
 };
 
 /*
