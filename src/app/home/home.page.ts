@@ -4,7 +4,6 @@ import { Park } from '../models/Park';
 import { ParksService } from '../services/parks.service';
 import { Platform } from '@ionic/angular';
 import { FirebaseService } from '../services/firebase.service';
-import { tick } from '@angular/core/testing';
 
 enum Field {
   code = 'code',
@@ -73,7 +72,7 @@ export class HomePage {
     if (parkSearched) this.park = parkSearched;
   }
   logout() {
-    this.authService.SignOut();
+    this.authService.signOut();
   }
   orderBy(field: string) {
     let fieldEnum: Field = field as Field;
