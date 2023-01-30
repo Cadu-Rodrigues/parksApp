@@ -14,6 +14,7 @@
   </ion-header>
 
   <div>
+    <button (click)="logout()">Logout</button>
     <ul>
       <div *ngFor="let park of parks">
         <li>{{park.id}} | {{park.name}} | {{park.code}} | {{park.address}} | {{park.discount}} | {{park.distance}}</li>

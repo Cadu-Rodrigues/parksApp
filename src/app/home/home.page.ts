@@ -41,4 +41,7 @@ export class HomePage {
         //window.open('geo:0,0?q=' + destination + '(' + label + ')', '_system');
       }
   }
+  logout() {
+    this.authService.SignOut();
+  }
 }
