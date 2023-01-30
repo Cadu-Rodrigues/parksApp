@@ -13,8 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+    <ul>
+      <li *ngFor="let park of parks">
+        {{park.id}} | {{park.name}} | {{park.code}} | {{park.address}} | {{park.discount}} | {{park.distance}}
+      </li>
+    </ul>
   </div>
 </ion-content>

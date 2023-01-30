@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  APILink: "https://api.hubees.com.br/park",
 };
 
 /*
