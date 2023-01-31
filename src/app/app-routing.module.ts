@@ -5,17 +5,17 @@ import { RouteGuard } from './guard/route.guard';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
     canActivate: [RouteGuard]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'signup',
-    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
   },
 ];
 

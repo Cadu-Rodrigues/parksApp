@@ -1,0 +1,11 @@
+<div class="container">
+  <ion-text color="primary">
+    <h2>Buscar Estacionamento</h2>
+  </ion-text>
+  <form (ngSubmit)="search()">
+    <ion-searchbar placeholder="Insira id ou código" name="buscaId" id="buscaId" class="customSearchBar"
+      [(ngModel)]="searchValue"></ion-searchbar>
+    <ion-button type="submit" expand="block">Buscar</ion-button>
+  </form>
+  <app-card id="searchReturn" *ngIf="this.park.id && this.park.code" [park]="this.park" [color]="'light'"></app-card>
+</div>

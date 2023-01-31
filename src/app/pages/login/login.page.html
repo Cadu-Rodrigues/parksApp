@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Parks APP</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/signup">Cadastrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <form (ngSubmit)="signIn()">
+          <ion-input id="email" required [(ngModel)]="user.email" name="email" placeholder="Email"></ion-input>
+          <ion-input type="password" id="paswword" required [(ngModel)]="user.password" name="password"
+            placeholder="Senha"></ion-input>
+          <ion-button type="submit" expand="block"> Login</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-card [color]="color">
+  <ion-card-header>
+    <ion-card-title>{{park.name}}</ion-card-title>
+    <ion-card-subtitle><ion-icon name="location-outline"></ion-icon>{{park.address}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <p><span>Código: </span>{{park.code}} <span>ID: </span>{{park.id}}</p>
+    <div>
+      <ion-chip color="secondary"><ion-icon name="trending-down-outline"></ion-icon>
+        <ion-label>{{park.discount}}%</ion-label></ion-chip>
+      <ion-chip color="secondary"> <ion-icon name="navigate-outline"></ion-icon>
+        <ion-label>{{park.distance | number:
+          '1.0-0'}} km</ion-label></ion-chip>
+    </div>
+    <ion-button (click)="openMap(park)" color="tertiary" fill="solid"><ion-icon name="compass-outline"></ion-icon>Abrir
+      no mapa</ion-button>
+  </ion-card-content>
+</ion-card>

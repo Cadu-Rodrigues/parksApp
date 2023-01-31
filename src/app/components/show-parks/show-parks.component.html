@@ -1,0 +1,17 @@
+<div class="container">
+  <ion-text color="primary">
+    <h2>Estacionamentos</h2>
+  </ion-text>
+  <ion-text color="dark">
+    <h3>Ordenação:</h3>
+  </ion-text>
+  <ion-segment (ionChange)="orderBy($event)">
+    <ion-segment-button value="code">
+      <ion-label>Código</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="distance">
+      <ion-label>Distância</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <app-card *ngFor="let park of parks" [park]="park"></app-card>
+</div>
