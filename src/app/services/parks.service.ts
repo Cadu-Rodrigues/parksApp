@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { APIResponse } from '../models/APIResponse';
-import { Geolocation } from '@capacitor/geolocation';
+import { Geolocation, Position } from '@capacitor/geolocation';
 import { ParkResponse } from '../models/ParkResponse';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class ParksService {
     return this.http.get<APIResponse>(environment.APILink, options);
   }
   async calculateDistance(park: ParkResponse): Promise<number> {
-    const coordinates = await Geolocation.getCurrentPosition();
+    const coordinates = await this.getCoordinates();
     return this.getDistanceInKm(
       coordinates.coords.latitude,
       coordinates.coords.longitude,
@@ -26,7 +26,10 @@ export class ParksService {
       parseFloat(park.lng)
     );
   }
-  getDistanceInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
+  async getCoordinates(): Promise<Position>{
+    return await Geolocation.getCurrentPosition();
+  }
+  getDistanceInKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
     var R = 6371; // Radius of the earth in km
     var dLat = this.deg2rad(lat2 - lat1); // deg2rad below
     var dLon = this.deg2rad(lon2 - lon1);
@@ -41,7 +44,7 @@ export class ParksService {
     return d;
   }
 
-  deg2rad(deg: number) {
+  deg2rad(deg: number): number {
     return deg * (Math.PI / 180);
   }
 }

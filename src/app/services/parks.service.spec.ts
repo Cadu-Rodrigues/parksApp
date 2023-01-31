@@ -1,8 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ParksService } from './parks.service';
-import { HttpClientTestingModule} from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ParkResponse } from '../models/ParkResponse';
+import { Position } from '@capacitor/geolocation';
 
 describe('ParksService', () => {
   let service: ParksService;
@@ -16,6 +17,16 @@ describe('ParksService', () => {
     expect(service).toBeTruthy();
   });
   it('should calculate distance in KM', async () => {
+    let distance = service.getDistanceInKm(
+      -23.544549449909198,
+      -46.57202408851278,
+      -23.535648788693052,
+      -46.56669813637155
+    );
+    expect(distance).toBeGreaterThan(1.1);
+    expect(distance).toBeLessThan(1.2);
+  });
+  it('should calculate distance from location', async () => {
     let park: ParkResponse = {
       id: '',
       code: '',
@@ -29,8 +40,8 @@ describe('ParksService', () => {
       county: '',
       state: '',
       country: '',
-      lat: '',
-      lng: '',
+      lat: '-23.535648788693052',
+      lng: '-46.56669813637155',
       orgShortName: '',
       orgName: '',
       orgCnpj: '',
@@ -44,7 +55,7 @@ describe('ParksService', () => {
         end: 0,
         start: 0,
         enabled: false,
-        dayOfWeek: 0
+        dayOfWeek: 0,
       },
       partnerParkingId: '',
       showInTheMap: false,
@@ -64,7 +75,7 @@ describe('ParksService', () => {
         amount: '',
         percentage: 0,
         createdAt: '',
-        updatedAt: ''
+        updatedAt: '',
       },
       parkingFeature: {
         id: '',
@@ -73,10 +84,31 @@ describe('ParksService', () => {
         physicalParking: '',
         rainProtection: '',
         createdAt: '',
-        updatedAt: ''
-      }
+        updatedAt: '',
+      },
     };
-    let distance = service.getDistanceInKm(0,0,1,1);
-    expect(distance).toBeGreaterThan(0);
+    let coordinates: Position = {
+      coords: {
+        latitude: -23.544549449909198,
+        longitude: -46.57202408851278,
+        accuracy: 0,
+        altitudeAccuracy: 0,
+        altitude: 0,
+        speed: 0,
+        heading: 0,
+      },
+      timestamp: 0,
+    };
+    let spy = spyOn(service, 'getCoordinates').and.returnValue(
+      Promise.resolve(coordinates)
+    );
+    await service.calculateDistance(park).then((distance) => {
+      expect(distance).toBeGreaterThan(1.1);
+      expect(distance).toBeLessThan(1.2);
+    });
   });
+  it('should convert deg to rad',()=>{
+    let converted = service.deg2rad(1);
+    expect(converted).toEqual(0.017453292519943295);
+  })
 });
