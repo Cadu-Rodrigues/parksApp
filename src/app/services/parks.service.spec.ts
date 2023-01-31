@@ -76,6 +76,7 @@ describe('ParksService', () => {
         updatedAt: ''
       }
     };
-    let distance = service.calculateDistance(park);
+    let distance = service.getDistanceInKm(0,0,1,1);
+    expect(distance).toBeGreaterThan(0);
   });
 });

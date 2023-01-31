@@ -1,7 +1,12 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
+import { SearchParkComponent } from 'src/app/components/search-park/search-park.component';
+import { ShowParksComponent } from 'src/app/components/show-parks/show-parks.component';
+import { environment } from 'src/environments/environment';
 import { FirebaseService } from '../../services/firebase.service';
 
 import { HomePage } from './home.page';
@@ -9,21 +14,15 @@ import { HomePage } from './home.page';
 describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
-  const FirestoreStub = {
-    collection: (name: string) => ({
-      doc: (_id: string) => ({
-        valueChanges: () => new BehaviorSubject({ foo: 'bar' }),
-        set: (_d: any) => new Promise<void>((resolve, _reject) => resolve()),
-      }),
-    }),
-  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomePage],
-      imports: [IonicModule.forRoot(), HttpClientTestingModule],
+      declarations: [HomePage,SearchParkComponent,ShowParksComponent],
+      imports: [IonicModule.forRoot(), HttpClientTestingModule,FormsModule],
       providers: [
-        { provide: FirebaseService, useValue: FirestoreStub },
+        FirebaseService,
+        AngularFireAuthModule,
+        { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
       ],
     }).compileComponents();
 

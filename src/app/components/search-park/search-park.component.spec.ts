@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SearchParkComponent } from './search-park.component';
@@ -10,7 +11,7 @@ describe('SearchParkComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchParkComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(),FormsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchParkComponent);
