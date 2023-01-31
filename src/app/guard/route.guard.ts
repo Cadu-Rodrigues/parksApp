@@ -13,10 +13,7 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class RouteGuard implements CanActivate {
   constructor(public authService: FirebaseService, public router: Router) {}
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['login']);
     }

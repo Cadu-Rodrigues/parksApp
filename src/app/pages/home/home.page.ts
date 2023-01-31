@@ -32,7 +32,7 @@ export class HomePage {
       });
     });
   }
-  logout() {
+  logout():void {
     this.authService.signOut();
   }
 }

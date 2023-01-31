@@ -25,7 +25,7 @@ export class CardComponent implements OnInit {
    }
 
   ngOnInit() {}
-  openMap(park: Park) {
+  openMap(park: Park):void {
     let destination = park.latitude + ',' + park.longitude;
     if (this.platform.is('ios')) {
       window.open('maps://?q=' + destination, '_system');

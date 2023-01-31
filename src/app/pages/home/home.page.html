@@ -9,15 +9,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="grid">
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Park APP</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div>
-    <app-search-park [parks]="parks"></app-search-park>
-    <app-show-parks [parks]="parks"></app-show-parks>
-  </div>
+  <app-search-park [parks]="parks"></app-search-park>
+  <app-show-parks [parks]="parks"></app-show-parks>
 </ion-content>
