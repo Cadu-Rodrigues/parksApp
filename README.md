@@ -30,16 +30,16 @@ Entre no diretório do projeto
   cd bytebank
 ```
 
-Instale as dependências
+Execute a imagem docker
 
 ```bash
-  npm install
+  docker-compose up
 ```
 
-Inicie o servidor
+Abra a aplicação em seu navegador
 
 ```bash
-  ionic serve
+  localhost:8000
 ```
 
 ## Rodando os testes
