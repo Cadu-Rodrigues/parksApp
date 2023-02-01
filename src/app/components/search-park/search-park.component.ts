@@ -25,9 +25,22 @@ export class SearchParkComponent implements OnInit {
 
   ngOnInit() {}
   search() {
+    this.resetPark();
     let parkSearched = this.parks.find((park) => {
       return park.id == this.searchValue || park.code == this.searchValue;
     });
     if (parkSearched) this.park = parkSearched;
+  }
+  resetPark(){
+    this.park = {
+      id: '',
+      address: '',
+      code: '',
+      discount: 0,
+      distance: 0,
+      latitude: 0,
+      longitude: 0,
+      name: '',
+    };
   }
 }
